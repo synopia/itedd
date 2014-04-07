@@ -1,13 +1,13 @@
 class UserGroupsController < ApplicationController
+  load_and_authorize_resource
+
   def edit
-    @user_group = UserGroup.find_by_user_id current_user
   end
 
   def update
-    @user_group = UserGroup.find_by_user_id current_user
     if @user_group.update(user_params)
-      flash[:notice] = "Die Änderungen wurden gespeichert."
-      redirect_to edit_user_groups_path
+      flash[:notice] = 'Die Änderungen wurden gespeichert.'
+      redirect_to edit_user_group_path(@user_group)
     else
       render 'edit'
     end
@@ -17,7 +17,7 @@ class UserGroupsController < ApplicationController
 
   def user_params
     params.require(:user_group).permit(
-        :name, :twitter_account, :color, :logo, :website,
+        :id, :name, :twitter_account, :color, :logo, :website,
         :description, :facebook_page, :googleplus_page)
   end
 end

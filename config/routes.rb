@@ -1,10 +1,15 @@
 Itedd::Application.routes.draw do
 
+  get "approve" => 'approve#index'
+  get "approve/:id" => 'approve#approve', as: :approve_user
+  get 'events/embedded' => 'events#embedded'
+
   devise_for :users
 
   resource :welcomes
-  resource :user_groups
-  resource :events
+  resources :user_groups
+  resources :events
+
 
   root 'welcomes#index'
   # The priority is based upon order of creation: first created -> highest priority.

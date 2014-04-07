@@ -1,7 +1,8 @@
 h2 Einstellungen
 
 .large-12.columns
-  = simple_form_for(@user_group, :url=>user_groups_path(@user_group)) do |f|
+  = simple_form_for(@user_group, :url=>user_group_path(@user_group)) do |f|
+    = f.input :id, as: :hidden
     = f.input :name
     = f.input :color
     = f.input :logo
@@ -10,5 +11,5 @@ h2 Einstellungen
     = f.input :twitter_account
     = f.input :facebook_page
     = f.input :googleplus_page
-    = f.button :submit, "Änderungen speichern"
+    = f.button :submit, 'Änderungen speichern'
 
